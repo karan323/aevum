@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Aevum brand refinements */
+body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+
+/* Provide a safe default for dynamic header height */
+:root { --header-h: 0px; }
+
+/* Utility: hide scrollbars but keep scrolling */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Subtle lighting glow for header action icons */
+.icon-glow {
+  position: relative;
+}
+.icon-glow::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 12px;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, var(--glow-color, rgba(184,134,43,0.35)) 0%, rgba(184,134,43,0.2) 35%, transparent 60%);
+  filter: blur(6px);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity .25s ease, transform .25s ease;
+}
+.icon-glow:hover::after, .icon-glow:focus-visible::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Glass / liquid effect utilities */
+.glass-card {
+  position: relative;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.55), rgba(255,255,255,0.18));
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border: 1px solid rgba(255,255,255,0.35);
+  box-shadow: 0 8px 30px rgba(2,6,23,0.15), inset 0 1px 0 rgba(255,255,255,0.35), inset 0 -1px 0 rgba(2,6,23,0.08);
+}
+.glass-card::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(120px 80px at 12% 0%, rgba(255,255,255,0.55), transparent 60%),
+              radial-gradient(160px 100px at 100% 0%, rgba(255,255,255,0.15), transparent 70%);
+}
+
+.glass-pill {
+  position: relative;
+  border-radius: 9999px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.65), rgba(255,255,255,0.2));
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  border: 1px solid rgba(255,255,255,0.45);
+  box-shadow: 0 4px 18px rgba(2,6,23,0.12), inset 0 1px 0 rgba(255,255,255,0.45), inset 0 -1px 0 rgba(2,6,23,0.06);
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+}
+.glass-pill:hover { box-shadow: 0 6px 22px rgba(2,6,23,0.18), inset 0 1px 0 rgba(255,255,255,0.55); }
+.glass-pill:active { transform: translateY(1px); }
